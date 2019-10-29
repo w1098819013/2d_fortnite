@@ -1,0 +1,31 @@
+Features: For each feature you implement, move to the Implemented section and
+explain who did it (utorid) and how you did it. You can consider these as 
+almost user stories, if you just add a bit to them. Add more features/user stories at the bottom.
+Move them up when completed.
+
+------------------------------------------------------------------------------------
+Implemented: 
+------------------------------------------------------------------------------------
+
+0) Established Nodejs server and websocket connection, clients can now view updates done 
+   by other clients.
+   Done by: craigtho, linwei17
+
+1) 
+
+
+------------------------------------------------------------------------------------
+Unimplemented:
+------------------------------------------------------------------------------------
+
+- Ammo can be picked up
+- Mouse to move crosshairs
+- Player can shoot weapon
+- Player can be killed
+- Opponent can be killed
+- Player can win/lose game -> player is reauthenticated and scores are send to rest 
+    api then to server.
+- display top 10 scores.
+- allow user update
+- allow user delete
+- reauthenticate user when they 

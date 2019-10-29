@@ -1,0 +1,68 @@
+# Do all of this on the lab systems (you don't need to login to cslinux)
+# If you want to tunnel to the lab system execute the following on your local ubuntu
+# system ...
+
+# ssh [UTORID]@dh2020pcXX.utm.utoronto.ca -L 8000:dh2020pcXX.utm.utoronto.ca:8000
+# then on my local browser
+
+# http://localhost:8000/...
+# -------------------------------------------------------------------------
+# Setup for the files here, though we already created a package.json file
+# so you can actually get away with executing 
+npm install
+
+# -------------------------------------------------------------------------
+# Here is what we did to set this all up...
+npm init
+# npm init creates a package.json
+# http://browsenpm.org/package.json
+# https://docs.npmjs.com/files/package.json
+# Take the defaults here
+
+# We are adding libraries, they will be in our local node_modules
+
+npm install --save express
+
+# for post https://scotch.io/tutorials/use-expressjs-to-get-url-and-post-parameters
+npm install --save body-parser 
+
+# http://www.sqlitetutorial.net/sqlite-nodejs/
+npm install --save sqlite3
+
+# check out the package.json now
+# check out node_modules
+
+nodejs counter_node.js
+
+now:
+sending the entire model over, when server
+
+For a3:
+Connect to the page(client): 
+http://142.1.200.140:10231
+
+Notes: 
+For member management, still uses Restful api. But for game states, web sockets. 
+How to package the game up on server-side and send? Split the controller code into 2 parts:
+- Creating the game objects and updating it is on the socket-server code, 
+while other detecting key-press etc is on the client side controller.
+- The client side controller detects user activity, 
+then instead of poking the model for update, 
+it now sends the events through the web socket connection, server receives it, updates the game state accordingly, 
+and send the state back to the client.
+- for now, just package up the entire game (stage), use JSON.stringify to send the string representation of the game, 
+while the client side can use JSON.decode (Arnold mentioned it, not sure if it is correct though) to decode it into raw data.
+- Each actor needs an actorID, also have to know which player each player is, thus the world can render respectively.
+
+Apr.1st notes:
+- On connection, (server side socket code in node.js), checks if the size of the web-socket-server's(wss)
+client is 1, if yes then startGame(the ftn in node.js, not controller.js), which steps the actors
+and broadcasts the updated stage to all clients.
+- Clients should receive the stage as a string rep of the JSON of the stage, 
+then, should render accordingly after parsing the objects.
+
+(Client-side now)
+How to render? Whatever received over the socket is a HUUGE JSON object, 
+how to put the updates into the model and tell the model on the client side to render when it's done?
+- A dictionary for the stage's actors list, key will be a random hash value, 
+each time there's an update, send stuff respectively. Step function will detect what changes.

@@ -1,0 +1,75 @@
+#ui_login {
+	display: block;
+}
+#ui_counter, #ui_game {
+	display: none;
+}
+body {position: relative; margin: 10px; padding: 0; }
+
+header {
+	width: 100%;
+}
+header h1 {
+	margin:0px; 
+	float: left;
+	display:inline-block;
+}
+
+nav {
+	/* font: 16px Verdana, sans-serif; */
+        float:right; 
+}
+
+nav a {
+	display: inline-block;
+	text-align: center;
+	font: bold 1em sans-serif;
+	padding: 5px 10px; /* top and bottom, left and right */
+	margin: 0 0 2px 0; /* top right bottom left */
+	border: 2px solid black;
+	/* border-width: 0px; */
+	text-decoration: none; /* none, underline, overline, blink */
+	color: #000;
+	background:#6f6;
+}
+nav a:hover {color: #fff;}
+
+.ui_top h2 {
+	text-align: center;
+}
+
+.ui_mobile_controls{
+	margin: 0 auto; /* centres horizontally */
+	width: 100px;
+}
+
+#orientation{
+	margin: 0 auto; /* centres horizontally */
+	width: 100px;
+}
+
+.nav_selected {
+	color: #6f6;
+	background: #000;
+}
+
+div.form-top {
+	border:1px solid black;
+	margin-left: auto;
+	margin-right:auto;
+	padding: 10px;
+    	display: table;
+}
+
+div.form-row {
+    display: table-row;
+}
+div.form-errors {
+	background: red;
+	color: white;
+}
+
+label, input {
+    display: table-cell;
+    margin-bottom: 10px;
+}

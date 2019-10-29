@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta HTTP-EQUIV="EXPIRES" CONTENT="-1">
+		<script src="lib/jquery-3.3.1.min.js"></script>
+
+		<script src="rest.js"></script>
+		<script type="module" src='./model.js' ></script>
+		<!-- <script type="module" src='./utils.js' ></script> -->
+		<!-- <script type="module" > import {} from './module.js' </script> -->
+		<script language="javascript" src="model.js" > </script>
+		<script language="javascript" src="utils.js" > </script>
+		<script language="javascript" src="controller.js" > </script>
+
+		<link rel="stylesheet" href="style.css" type="text/css"> 
+
+		<title>f0rt9it32d</title>
+	</head>
+	<body bgcolor="ffffff">
+		<header>
+			<h1>f0rt9it32d</h1>
+			<nav id="ui_nav">
+				<a name="ui_play" onclick="showUI('#ui_play');">Play</a>
+				<a name="ui_instructions" onclick="showUI('#ui_instructions');">Instructions</a>
+				<a name="ui_stats" >Stats</a>
+				<a name="ui_profile" onclick="gui_profile_load();">Profile</a> 
+				<a name="ui_logout" onclick="gui_logout();">Logout</a>
+			</nav>
+		</header>
+		<div style="clear: both;"></div>
+		<div class="ui_top" id="ui_login">
+			<h2>Login</h2>
+			<div class="form-top">
+				<div class="form-row">
+					<label>user</label><input type="text" name="user" placeholder="User Name" />
+				</div>
+				<div class="form-row">
+					<label>password</label><input type="password" name="password" placeholder="Password" />
+				</div>
+				<div class="form-row">
+					<input type="submit" id="loginSubmit" value="Login" onclick="gui_login();" />
+				</div>
+				<thead>
+					<div class="form-errors" colspan="2"></div>
+				</thead>
+				<a onclick="showUI('#ui_register');">Register</a>
+			</div>
+		</div>
+		<div class="ui_top" id="ui_instructions">
+			<div class="form-top">
+				<ul>
+				<li> Move with <code>wasd</code>
+				<li> Boxes restore ammunition and health, move next to them and press e
+				<li> Aim with your mouse
+				<li> Mouse click fires
+				</ul>
+			</div>
+		</div>
+		<div class="ui_top" id="ui_register">
+			<h2>Register</h2>
+			<div class="form-top">
+				<div class="form-row" name="user">
+					<label>user</label><input type="text" data-name="user" placeholder="User Name" />
+				</div>
+				<div class="form-row" name="password">
+					<label>password</label><input type="password" data-name="password" placeholder="Password" />
+				</div>
+				<div class="form-row" name="confirmpassword">
+					<label>confirm</label><input type="password" data-name="confirmpassword" placeholder="Confirm Password" />
+				</div>
+				<div class="form-row">
+					<label>skill</label>
+					<input type="radio" data-name="skill" name="skill" value="beginner" >beginner</input>
+					<input type="radio" data-name="skill" name="skill" value="intermediate" >intermediate</input>
+					<input type="radio" data-name="skill" name="skill" value="advanced">advanced</input>
+				</div>
+				<div class="form-row" name="birthday">
+					<label>Birthday</label>
+					<input type="number" min="1900" max="2100" data-name="year" placeholder="year"/>
+					<select data-name="month">
+						<option value="Jan">Jan</option>
+						<option value="Feb">Feb</option>
+						<option value="Mar">Mar</option>
+						<option value="Apr">Apr</option>
+						<option value="May">May</option>
+						<option value="Jun">Jun</option>
+						<option value="Jul">Jul</option>
+						<option value="Aug">Aug</option>
+						<option value="Sep">Sep</option>
+						<option value="Oct">Oct</option>
+						<option value="Nov">Nov</option>
+						<option value="Dec">Dec</option>
+					</select>
+					<input type="number" min="1" max="31" data-name="day" placeholder="day"/>
+				</div>
+				<div class="form-row" name="plantoplay">
+					<label>I plan to play:</label>
+					<input type="checkbox" data-name="playmorning" value="yes" >morning</input>
+					<input type="checkbox" data-name="playafternoon" value="yes" >afternoon</input>
+					<input type="checkbox" data-name="playevening" value="yes" >evening</input>
+				</div>
+				<div class="form-row">
+					<input type="submit" id="registerSubmit" value="Register" onclick="gui_register();" />
+				</div>
+				<thead>
+					<div class="form-errors" colspan="2"></div>
+				</thead>
+				<a onclick="showUI('#ui_login');">Back to login</a>
+			</div>
+		</div>
+		<div class="ui_top" id="ui_profile">
+			<div class="form-top">
+				<div class="form-row" name="user">
+					<label>user</label><span display="table-cell" data-name="user"></span>
+				</div>
+				<div class="form-row" name="password">
+					<label>password</label><input type="password" data-name="password" placeholder="Password" />
+				</div>
+				<div class="form-row" name="confirmpassword">
+					<label>confirm</label><input type="password" data-name="confirmpassword" placeholder="Confirm Password" />
+				</div>
+				<div class="form-row">
+					<label>skill</label>
+					<input type="radio" data-name="skill" name="skill" value="beginner" >beginner</input>
+					<input type="radio" data-name="skill" name="skill" value="intermediate" >intermediate</input>
+					<input type="radio" data-name="skill" name="skill" value="advanced">advanced</input>
+				</div>
+				<div class="form-row" name="birthday">
+					<label>Birthday</label>
+					<input type="number" min="1900" max="2100" data-name="year" placeholder="year"/>
+					<select data-name="month">
+						<option value="Jan">Jan</option>
+						<option value="Feb">Feb</option>
+						<option value="Mar">Mar</option>
+						<option value="Apr">Apr</option>
+						<option value="May">May</option>
+						<option value="Jun">Jun</option>
+						<option value="Jul">Jul</option>
+						<option value="Aug">Aug</option>
+						<option value="Sep">Sep</option>
+						<option value="Oct">Oct</option>
+						<option value="Nov">Nov</option>
+						<option value="Dec">Dec</option>
+					</select>
+					<input type="number" min="1" max="31" data-name="day" placeholder="day"/>
+				</div>
+				<div class="form-row" name="plantoplay">
+					<label>I plan to play:</label>
+					<input type="checkbox" data-name="playmorning" value="yes" >morning</input>
+					<input type="checkbox" data-name="playafternoon" value="yes" >afternoon</input>
+					<input type="checkbox" data-name="playevening" value="yes" >evening</input>
+				</div>
+				<div class="form-row">
+					<input type="submit" id="updateProfileSubmit" value="Update" onclick="gui_profile();" />
+				</div>
+				<thead>
+					<div class="form-errors" colspan="2"></div>
+				</thead>
+			</div>
+		</div>
+		<div class="ui_top" id="ui_play">
+			<center>
+				<canvas id="stage" width="700" height="700" style="border:1px solid black;"> </canvas>
+			</center>
+
+			<!-- hidden by default. -->
+			<div class="ui_mobile_controls" style="text-align:center;width:320px;" hidden>
+				<button id="control_up">UP</button><br><br>
+				<button id="control_left">LEFT</button>
+				<button id="control_right">RIGHT</button><br><br>
+				<button id="control_down">DOWN</button>
+			</div>
+
+			<div id="orientation"> </div>
+
+		</div>
+	</body>
+</html>
